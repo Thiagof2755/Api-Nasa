@@ -1,13 +1,4 @@
-# Arquivos e diretórios que devem ser ignorados pelo Git
 
-# Dados grandes e temporários
-Dados/
-Dados.zip
-*.tif
-*.tiff
-*.jpg
-*.jpeg
-*.png
 
 # Arquivos do sistema
 .DS_Store
