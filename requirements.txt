@@ -1,5 +1,8 @@
 fastapi
-uvicorn
+uvicorn[standard]
 rasterio
 numpy
 pydantic
+scipy
+pandas
+typing-extensions
