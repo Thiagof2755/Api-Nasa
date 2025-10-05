@@ -29,7 +29,7 @@ class FloodModel:
     e eventos reais (CSV).
     """
 
-    def __init__(self, slope_tif, rough_tif, aspect_tif, sentinel_tif, occ_csv="csv/alagamentos_uberlandia.csv", weights=None):
+    def __init__(self, slope_tif, rough_tif, aspect_tif, sentinel_tif, occ_csv="Dados/csv/alagamentos_uberlandia.csv", weights=None):
         self.slope_tif = slope_tif
         self.rough_tif = rough_tif
         self.aspect_tif = aspect_tif
