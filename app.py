@@ -47,16 +47,10 @@ app = FastAPI(
     - Climate adaptation planning
     """,
     version="2.0",
-    contact={
-        "name": "UrbMind Development Team",
-        "email": "team@urbmind.com",
-        "url": "https://github.com/urbmind/flood-risk-api"
-    },
     license_info={
         "name": "MIT License",
         "url": "https://opensource.org/licenses/MIT"
     },
-    terms_of_service="https://urbmind.com/terms",
     openapi_tags=[
         {
             "name": "Analysis",

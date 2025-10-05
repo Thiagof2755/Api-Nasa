@@ -10,7 +10,7 @@ id,data,lon,lat,chuva_mm,duracao_min,local_descr,impacto,obs
 9,2024-11-19,-48.270,-18.910,35,45,"Bairro Morumbi","alagamento","ruas inundadas e casas atingidas"
 10,2025-01-14,-48.285,-18.905,47,60,"Tibery / Karaíba / Patrimônio","alagamento","trânsito parado e veículos ilhados"
 11,2024-10-22,-48.261,-18.902,45,45,"Rondon Pacheco / Tubalina","alagamento","forte chuva causou caos"
-12,2024-10-10,-48.290,-18.918,38,40,"Bairro Planalto","alagamento","alagamentos em vias próximas ao córrego"
+12,2024-10-10,-48.290,-18.918,38,40,"Bairro Planalto","alagamento","al  
 13,2023-12-15,-48.300,-18.925,50,50,"Bairro Custódio Pereira","alagamento","chuva forte atingiu zona leste"
 14,2025-02-03,-48.295,-18.930,46,45,"Segismundo Pereira","alagamento","ruas ficaram submersas"
 15,2024-11-12,-48.275,-18.920,53,35,"Centro","alagamento","pontos de alagamento em avenidas principais"
