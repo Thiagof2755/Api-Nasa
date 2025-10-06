@@ -1,0 +1,207 @@
+{
+  "name": "weatherforecast",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 2
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -352,
+        -656
+      ],
+      "id": "REPLACE_ID",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "url": "={{\n`https://api.meteomatics.com/${\n  $now.setZone('utc').startOf('day').toFormat(\"yyyy-LL-dd'T'00:00:00'Z'\")\n}--${\n  $now.setZone('utc').startOf('day').toFormat(\"yyyy-LL-dd'T'23:59:59'Z'\")\n}:PT1H/weather_symbol_1h:idx/-18.7,-48.5_-19.1,-48.1:0.005,0.05/json`\n}}\n\n\n\n\n\n",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "{{__METEOMATICS_BASIC_AUTH__}}"
+            },
+            {
+              "name": "User-Agent",
+              "value": "insomnia/2023.5.8"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -112,
+        -656
+      ],
+      "id": "REPLACE_ID",
+      "name": "Get_Rain"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "dates",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -112,
+        -416
+      ],
+      "id": "REPLACE_ID",
+      "name": "Split3"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "coordinates",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -336,
+        -416
+      ],
+      "id": "REPLACE_ID",
+      "name": "Split2"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        128,
+        -656
+      ],
+      "id": "REPLACE_ID",
+      "name": "Split1",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "tableId": "weatherforecast",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "forecast_date",
+              "fieldValue": "={{ DateTime.fromISO($json.dates.date).setZone('America/Sao_Paulo').toFormat('yyyyLLdd') }}"
+            },
+            {
+              "fieldId": "forecast_hour",
+              "fieldValue": "={{Number( DateTime.fromISO($json.dates.date).setZone('America/Sao_Paulo').toFormat('HH')) }}"
+            },
+            {
+              "fieldId": "search_date",
+              "fieldValue": "={{ $now.setZone('America/Sao_Paulo').toISO() }}\n\n"
+            },
+            {
+              "fieldId": "latitude",
+              "fieldValue": "={{ $json.lat }}"
+            },
+            {
+              "fieldId": "longitude",
+              "fieldValue": "={{ $json.lon }}"
+            },
+            {
+              "fieldId": "weather",
+              "fieldValue": "={{ $json.dates.value }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        176,
+        -416
+      ],
+      "id": "REPLACE_ID",
+      "name": "InsertIntoDataBase",
+      "credentials": {}
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get_Rain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get_Rain": {
+      "main": [
+        [
+          {
+            "node": "Split1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split3": {
+      "main": [
+        [
+          {
+            "node": "InsertIntoDataBase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split2": {
+      "main": [
+        [
+          {
+            "node": "Split3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split1": {
+      "main": [
+        [
+          {
+            "node": "Split2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "REPLACE_VERSIONID",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "REPLACE_INSTANCE_ID"
+  },
+  "id": "REPLACE_ID",
+  "tags": []
+}
