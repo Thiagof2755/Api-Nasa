@@ -1,0 +1,109 @@
+{
+    "pontos": [
+        {
+            "lon": -48.254538,
+            "lat": -18.8956335,
+            "chuva_mm": 50,
+            "freq_min": 60,
+            "modo": "geo"
+        },
+        {
+            "lon": -48.270832,
+            "lat": -18.910473,
+            "chuva_mm": 50,
+            "freq_min": 20,
+            "modo": "geo"
+        },
+        {
+            "lon": -48.283672,
+            "lat": -18.913418,
+            "chuva_mm": 45,
+            "freq_min": 40,
+            "modo": "geo"
+        },
+        {
+            "lon": -48.260721,
+            "lat": -18.882989,
+            "chuva_mm": 40,
+            "freq_min": 60,
+            "modo": "geo"
+        },
+        {
+            "lon": -48.276229,
+            "lat": -18.914793,
+            "chuva_mm": 50,
+            "freq_min": 15,
+            "modo": "geo"
+        },
+        {
+            "lon": -48.240547,
+            "lat": -18.895216,
+            "chuva_mm": 45,
+            "freq_min": 30,
+            "modo": "geo"
+        },
+        {
+            "lon": -48.294852,
+            "lat": -18.928353,
+            "chuva_mm": 35,
+            "freq_min": 60,
+            "modo": "geo"
+        },
+        {
+            "lon": -48.285107,
+            "lat": -18.937331,
+            "chuva_mm": 60,
+            "freq_min": 20,
+            "modo": "geo"
+        },
+        {
+            "lon": -48.27813,
+            "lat": -18.909002,
+            "chuva_mm": 50,
+            "freq_min": 45,
+            "modo": "geo"
+        },
+        {
+            "lon": -48.312864,
+            "lat": -18.91865,
+            "chuva_mm": 40,
+            "freq_min": 50,
+            "modo": "geo"
+        },
+        {
+            "lon": -48.302315,
+            "lat": -18.920748,
+            "chuva_mm": 42,
+            "freq_min": 55,
+            "modo": "geo"
+        },
+        {
+            "lon": -48.291893,
+            "lat": -18.916985,
+            "chuva_mm": 55,
+            "freq_min": 25,
+            "modo": "geo"
+        },
+        {
+            "lon": -48.285874,
+            "lat": -18.904372,
+            "chuva_mm": 35,
+            "freq_min": 80,
+            "modo": "geo"
+        },
+        {
+            "lon": -48.257849,
+            "lat": -18.874941,
+            "chuva_mm": 30,
+            "freq_min": 100,
+            "modo": "geo"
+        },
+        {
+            "lon": -48.323498,
+            "lat": -18.91265,
+            "chuva_mm": 60,
+            "freq_min": 10,
+            "modo": "geo"
+        }
+    ]
+}

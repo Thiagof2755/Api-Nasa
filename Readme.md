@@ -31,10 +31,41 @@ score = normalize(base)
 Given rainfall totals and duration, the model maps susceptibility to a flood probability:
 1. **Rain intensity**: `intensity = chuva_mm / max(freq_min, 1)`; scaled with `tanh(intensity / 1.5)`.
 2. **Accumulated rain**: `tanh(chuva_mm / 60)` emphasizes totals around 60 mm as a high-risk reference.
-3. **Base weight**: `0.4 + 0.3 * base_score` (0.4�0.7) retains terrain influence without overpowering rain.
+3. **Base weight**: `0.4 + 0.3 * base_score` (0.4�0.7) retains terrain influence without overpowering rain.
 4. **Linear combination**: `lin = base*base_weight + 0.8*mm_scale + 1.2*int_scale - 1.0`.
 5. **Logistic mapping**: `probability = 1 / (1 + exp(-2.5 * lin))` clamps results to [0, 1].
 6. **Historical events proximity**: Haversine distance checks the CSV for events within 1.2 km. The probability is multiplied by `1 + 0.5*(weight - 1)`, where `weight <= 1.8` increases with event density and rain recorded during those events.
+
+## 🤖 Automated Data Collection (N8N Integration)
+
+The UrbMind project includes **N8N workflow automation** for real-time meteorological data collection, enhancing the flood risk assessment with live weather data.
+
+### 🌧️ **Rain Data Collection Workflow** (`GetRain.sanitized.json`)
+- **Frequency**: Every 2 hours automated execution
+- **Data Source**: Meteomatics API for precipitation data
+- **Coverage**: Uberlandia region (-18.7,-48.5 to -19.1,-48.1)
+- **Resolution**: 0.005° spatial resolution, 1-hour temporal resolution
+- **Purpose**: Collect real-time rainfall measurements for live flood risk updates
+
+### 🌤️ **Weather Forecast Workflow** (`weatherforecast.sanitized.json`)
+- **Frequency**: Every 2 hours automated execution  
+- **Data Source**: Meteomatics API for weather forecasting
+- **Coverage**: Same geographic area as rain data collection
+- **Purpose**: Provide weather symbol indices and forecast data for predictive analysis
+
+### 🔗 **N8N Workflow Benefits**:
+- **Automated Data Pipeline**: No manual intervention required
+- **Real-time Updates**: Fresh meteorological data every 2 hours
+- **API Integration**: Seamless connection with external weather services
+- **Scalable Architecture**: Easy to extend to other data sources
+- **Error Handling**: Built-in retry mechanisms and data validation
+
+### 📁 **Workflow Files Location**:
+```
+Scripts N8N/
+├── GetRain.sanitized.json          # Rainfall data collection workflow
+└── weatherforecast.sanitized.json  # Weather forecast workflow
+```
 
 ## API Endpoints
 

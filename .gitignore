@@ -40,7 +40,6 @@ wheels/
 # Arquivos de teste e temporários
 test_*.py
 *_test.py
-*.json
 temp/
 tmp/
 
